@@ -79,7 +79,13 @@ class App extends Component {
           <Form onSubmitForm={this.addContact} />
 
           <h2>Contacts</h2>
-          <Filter value={filter} onChange={this.filterChange}  />
+          
+          {this.showFilteredContacts().length > 0 || filter ? (
+            <Filter value={filter} onChange={this.filterChange} />
+          ) : (
+            <p>No contacts added</p>
+          )}
+
           <ContactsList
             contactList={this.showFilteredContacts()}
             onDelete={this.handleDeleteContact}
